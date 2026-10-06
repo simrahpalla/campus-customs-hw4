@@ -492,3 +492,105 @@ This file records the prompts I used while completing Homework 4.
 ### Follow-up prompt(s)
 
 > None.
+
+## Problem 13 — Push to GitHub and Submit the URL
+
+### Initial prompt
+
+> amazing
+>
+> Before we do Problem 13, please check the current git setup only — don’t change anything yet.
+> Tell me:
+>
+> * whether this project is already a git repository
+> * what `git remote -v` shows and whether an existing GitHub repo is connected
+> * whether `.env`, `campus_customs.db`, or anything under `data/products/` is currently tracked by git
+> * whether there are any obvious issues I should fix before the final push
+>
+> Please just report back what you find and do not create a repo, commit, untrack, or push anything yet.
+
+### What was missing
+
+- The first prompt was deliberately a read-only check. The actual submission steps (`.gitignore` contents, required files, README requirements, creating the public repo and pushing) came in the follow-up. The check found that the project wasn't a git repo, had no root `.gitignore`, and had no git identity configured, which the follow-up then addressed.
+
+### Follow-up prompt(s)
+
+> problem 13: push to github and submit the URL
+>
+> prepare this finished homework for submission to a new public GitHub repository.
+> Important: this project is NOT currently a git repository, so please initialize git from the correct top-level `hw4/` folder and set everything up from scratch.
+> Please do the following:
+>
+> 1. Make sure the final project is organized under a top-level folder named `hw4/`.
+> 2. Before running `git add`, create a root `.gitignore` that excludes at least:
+>
+> * `.env`
+> * `data/`
+> * `campus_customs.db`
+> * `data/products/`
+> * `.venv/`
+> * `frontend/node_modules/`
+> * `frontend/dist/`
+> * `__pycache__/`
+> * `*.pyc`
+> * `output/audit_trail.json.tmp`
+> * any other temporary/build files that should not be committed
+>
+> Do NOT delete my local data, database, images, or environment files — just keep them out of git.
+>
+> 3. Make sure the required submission files exist:
+>
+> * `AI_prompts.md`
+> * `requirements.txt`
+> * `.env.example`
+> * `.gitignore`
+> * `README.md`
+> * `frontend/`
+> * `backend/`
+>    * `main.py`
+>    * `agent.py`
+>    * `models.py`
+>    * `tools.py`
+>    * `prompts/prompt.md`
+> * `output/`
+>    * `harness.md`
+>    * `design.md`
+>    * `usability.md`
+>    * `app_check.html`
+>    * `app_check_images/`
+>    * `audit_trail.json`
+>
+> 4. Make sure `.env.example` contains placeholder variable names only and no real keys or secrets.
+> 5. Review `README.md` and make sure it clearly explains:
+>
+> * where to place the local `data/` pack
+> * how to install backend dependencies
+> * how to start the FastAPI backend
+> * how to install frontend dependencies
+> * how to start the React/Vite frontend
+> * required environment variables
+> * expected ports
+>
+> 6. Make sure `requirements.txt` accurately reflects the Python dependencies actually used.
+> 7. Initialize git in the `hw4/` folder.
+> 8. Before the first commit, verify with git that none of these are staged or tracked:
+>
+> * `.env`
+> * `campus_customs.db`
+> * anything under `data/`
+> * product images
+> * `.venv/`
+> * `frontend/node_modules/`
+> * build artifacts
+> * API keys or other secrets
+>
+> 9. Create a new public GitHub repository for this homework and connect it as the remote.
+> 10. Commit the project and push it to the public GitHub repo.
+> 11. After pushing, give me:
+>
+> * the public GitHub repository URL
+> * confirmation that the repo is public
+> * confirmation that it can be cloned
+> * confirmation that `.env`, the database, `data/`, product images, `.venv`, and `node_modules` were not committed
+>
+> Please be especially careful with the first `git add` since this project was not previously under git.
