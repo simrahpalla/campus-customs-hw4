@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Campus Customs App Check</title>
+  <style>
+    body { margin: 0; background: #fbf8f1; color: #121721; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; line-height: 1.5; }
+    header { background: #00356b; color: #fff; padding: 2rem 1.5rem; border-bottom: 4px solid #c9a24c; }
+    header h1 { margin: 0; font-family: Georgia, "Times New Roman", serif; font-weight: 400; font-size: 2.2rem; }
+    header p { margin: 0.4rem 0 0; color: #e4d8c1; }
+    main { max-width: 1100px; margin: 0 auto; padding: 1.5rem; }
+    section { background: #fff; border: 1px solid #d6c9ae; margin: 1.5rem 0 2.5rem; padding: 1.5rem; }
+    h2 { margin: 0 0 0.75rem; font-family: Georgia, "Times New Roman", serif; font-weight: 400; color: #0b1f3a; font-size: 1.6rem; }
+    h2 .num { color: #c9a24c; margin-right: 0.4rem; }
+    .proves { background: #f3ecdd; border-left: 4px solid #c9a24c; padding: 0.75rem 1rem; margin: 0 0 1rem; }
+    img { display: block; width: 100%; height: auto; border: 1px solid #d6c9ae; }
+    table { border-collapse: collapse; margin-top: 1rem; font-size: 0.9rem; }
+    th, td { border: 1px solid #d6c9ae; padding: 0.35rem 0.7rem; text-align: center; }
+    th { background: #0b1f3a; color: #fff; font-weight: 600; }
+    .ok { color: #1e6b34; font-weight: 600; }
+    footer { text-align: center; color: #6b6354; font-size: 0.85rem; padding: 0 1.5rem 2rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Campus Customs App Check</h1>
+    <p>Three required checks, captured from the live site (React frontend + FastAPI + PydanticAI agent) on 2026-10-05.</p>
+  </header>
+
+  <main>
+    <section id="inventory">
+      <h2><span class="num">1.</span>Inventory / price check through chat</h2>
+      <p class="proves">
+        The shopper asks the chatbot for the price and per-size stock of a real catalogue product, the
+        <strong>Pierson College Crewneck</strong>. The bot answers <strong>$58</strong> with
+        <strong>XS 12, S 2, M 8, L sold out, XL sold out, XXL 2</strong>, which exactly matches the
+        <code>catalogue</code> and <code>inventory</code> tables in <code>campus_customs.db</code> (table below).
+      </p>
+      <img src="app_check_images/inventory.png" alt="Chat panel: the shopper asks the price and stock of the Pierson College Crewneck, and the assistant answers $58 with per-size stock." />
+      <table>
+        <tr><th>Source</th><th>Price</th><th>XS</th><th>S</th><th>M</th><th>L</th><th>XL</th><th>XXL</th></tr>
+        <tr><td>Database</td><td>$58.00</td><td>12</td><td>2</td><td>8</td><td>0</td><td>0</td><td>2</td></tr>
+        <tr><td>Chatbot answer</td><td>$58</td><td>12</td><td>2</td><td>8</td><td>sold out</td><td>sold out</td><td>2</td></tr>
+        <tr><td>Match</td><td colspan="7" class="ok">✓ Every value matches</td></tr>
+      </table>
+    </section>
+
+    <section id="category">
+      <h2><span class="num">2.</span>Dynamic category search-result cards</h2>
+      <p class="proves">
+        The shopper asks <strong>“What hoodies do you have?”</strong>. The chatbot replies that there are 27 hoodies
+        ($45–$88), and the Products page updates to a <strong>“Hoodies”</strong> results section with
+        <strong>27 product cards</strong> (image, category, name, price, description), every one labeled
+        <em>Hoodie</em>. The cards come from the structured product list in the API response, not from HTML written by the agent.
+      </p>
+      <img src="app_check_images/category_results.png" alt="Products page showing a Hoodies results banner and hoodie product cards next to the chat reply listing 27 hoodies." />
+    </section>
+
+    <section id="recently-viewed">
+      <h2><span class="num">3.</span>Problem 9 usability feature: Recently viewed products</h2>
+      <p class="proves">
+        The shopper opened three product detail pages in this order: Yale Mom Hoodie → Branford 1 4 Zip → Boola Boola
+        T Shirt (names as shown in the catalogue). After returning to the Products page, the <strong>“Recently viewed”</strong> section lists all three,
+        <strong>newest first</strong>, with image, name and price. Each item links back to its product page.
+      </p>
+      <img src="app_check_images/recently_viewed.png" alt="Products page with a Recently viewed section showing Boola Boola T Shirt, Branford 1 4 Zip and Yale Mom Hoodie." />
+    </section>
+  </main>
+
+  <footer>Screenshots: 1440px-wide desktop window, headless Chrome, fresh guest session for each check.</footer>
+</body>
+</html>

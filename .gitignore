@@ -1,0 +1,44 @@
+# --- Secrets ---
+.env
+.env.*
+!.env.example
+
+# --- Local data pack (database + product images): not committed, see README ---
+data/
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+campus_customs.db
+data/products/
+*.zip
+
+# --- Python ---
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# --- Frontend ---
+frontend/node_modules/
+node_modules/
+frontend/dist/
+dist/
+*.tsbuildinfo
+*.local
+
+# --- Temporary / generated ---
+output/audit_trail.json.tmp
+output/audit_trail.corrupt-*.json
+*.tmp
+*.log
+
+# --- OS / editor ---
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+.claude/
